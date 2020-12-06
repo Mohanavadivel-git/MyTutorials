@@ -9,11 +9,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 
     @Autowired
-    HelloWorldReponse helloWorldReponse;
+    HelloWorldService helloWorldService;
+
 
     @RequestMapping(value = "/api/v1/helloworld", method = RequestMethod.GET, produces = "application/json")
     public HelloWorldReponse HelloWorld(){
-        helloWorldReponse.response = "helloworld";
-        return helloWorldReponse;
+        HelloWorldReponse response = helloWorldService.getResponsefromRepository();
+        return response;
     }
 }
